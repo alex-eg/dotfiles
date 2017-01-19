@@ -40,7 +40,9 @@
       ido-enable-flex-matching t
       mouse-yank-at-point t
       inhibit-startup-screen t
-      column-number-mode t)
+      column-number-mode t
+      ido-default-buffer-method 'selected-window
+      ido-default-file-method 'selected-window)
 
 (load-theme 'tango-dark)
 
