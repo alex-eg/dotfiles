@@ -1,0 +1,7 @@
+partial modifier_keys
+xkb_symbols "f13_toggle" {
+    key <FK13> {
+        type[Group1] = "PC_CONTROL_LEVEL2",
+        symbols[Group1] = [ ISO_Next_Group, F14 ]
+    };
+};
