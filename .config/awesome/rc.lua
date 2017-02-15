@@ -73,7 +73,7 @@ awful.util.spawn_with_shell(
 awful.util.spawn_with_shell(
    "xmodmap -e 'clear Lock' -e 'keycode 66 = Control_L' -e 'add Control = Control_L'")
 
-awful.util.spawn_with_shell("ibus-daemon -d -r -x -n awesome")
+awful.util.spawn_with_shell("fcitx -r")
 
 -- @DOC_LAYOUT@
 -- Table of layouts to cover with awful.layout.inc, order matters.
