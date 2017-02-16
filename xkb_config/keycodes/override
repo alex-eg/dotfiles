@@ -1,3 +1,7 @@
 default xkb_keycodes "f13" {
-    <FK13> = 66;
+    <FK13> = 37;
+};
+
+default xkb_keycodes "left_ctrl" {
+    <LCTL> = 66;
 };
