@@ -1,4 +1,0 @@
-Compile and apply
---------
-
-    xkbcomp -I$HOME/path/to/xkb_config ~/path/to/xkb_config/keymap/mymap $DISPLAY
