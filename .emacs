@@ -30,8 +30,8 @@
 (set-fontset-font t 'unicode "unifont-10:antialias=false" nil 'prepend)
 (set-fontset-font t 'unicode "MS Mincho-12" nil 'prepend)
 
-(require 'ido)
-(ido-mode)
+(require 'icicles)
+(icicle-mode 1)
 
 (setq default-input-method "russian-computer"
       browse-url-firefox-new-window-is-tab t
