@@ -9,6 +9,7 @@
 
 (setq-default c-basic-offset 4)
 (global-set-key [insert] 'delete-selection-mode) ;; Overwrite mode
+(global-set-key (kbd "M-o") 'other-window) ;; Instead of C-x o
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
