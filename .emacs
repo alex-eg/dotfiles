@@ -17,6 +17,7 @@
 (transient-mark-mode -1)
 (column-number-mode t)
 (desktop-save-mode 1)
+(winner-mode 1)
 
 (require 'package)
 (add-to-list 'package-archives
