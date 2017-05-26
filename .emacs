@@ -32,8 +32,7 @@
 (set-fontset-font t 'unicode "unifont-10:antialias=false" nil 'prepend)
 (set-fontset-font t 'unicode "MS Mincho-12" nil 'prepend)
 
-(require 'icicles)
-(icicle-mode 1)
+(ivy-mode 1)
 (projectile-mode 1)
 
 (setq default-input-method "russian-computer"
