@@ -28,9 +28,7 @@
 
 (setq-default indent-tabs-mode nil)
 
-(set-face-attribute 'default nil :font "8x13")
-(set-fontset-font t 'unicode "unifont-10:antialias=false" nil 'prepend)
-(set-fontset-font t 'unicode "MS Mincho-12" nil 'prepend)
+(set-face-attribute 'default nil :font "Input Sans-10")
 
 (ivy-mode 1)
 (projectile-mode 1)
