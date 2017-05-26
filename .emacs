@@ -34,6 +34,7 @@
 
 (require 'icicles)
 (icicle-mode 1)
+(projectile-mode 1)
 
 (setq default-input-method "russian-computer"
       browse-url-firefox-new-window-is-tab t
