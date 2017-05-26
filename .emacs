@@ -33,10 +33,19 @@
 (defun set-monospace-font ()
   (buffer-face-set '(:family "Input Mono")))
 
-(dolist (mode-hook '(dired-mode-hook
-                     help-mode-hook
-                     minibuffer-setup-hook))
-  (add-hook mode-hook #'set-monospace-font))
+(defun add-hook-modes (mode-hook-list hook)
+  (dolist (mode-hook mode-hook-list)
+    (add-hook mode-hook hook)))
+
+(add-hook-modes '(dired-mode-hook
+                       help-mode-hook
+                       minibuffer-setup-hook)
+                #'set-monospace-font)
+
+(add-hook-modes '(lisp-mode-hook
+                  emacs-lisp-mode-hook
+                  lisp-interaction-mode-hook)
+                #'enable-paredit-mode)
 
 (ivy-mode 1)
 (projectile-mode 1)
@@ -53,11 +62,6 @@
       ido-default-file-method 'selected-window)
 
 (load-theme 'tango-dark)
-
-;;; Paredit
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
