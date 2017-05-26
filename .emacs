@@ -30,6 +30,14 @@
 
 (set-face-attribute 'default nil :font "Input Sans-10")
 
+(defun set-monospace-font ()
+  (buffer-face-set '(:family "Input Mono")))
+
+(dolist (mode-hook '(dired-mode-hook
+                     help-mode-hook
+                     minibuffer-setup-hook))
+  (add-hook mode-hook #'set-monospace-font))
+
 (ivy-mode 1)
 (projectile-mode 1)
 
