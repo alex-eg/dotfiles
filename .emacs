@@ -8,9 +8,19 @@
 (load "~/quicklisp/clhs-use-local.el" t)
 
 (setq-default c-basic-offset 4)
-(global-set-key [insert] 'delete-selection-mode) ;; Overwrite mode
-(global-set-key (kbd "M-o") 'other-window) ;; Instead of C-x o
 
+(defmacro global-set-keys (&rest map)
+  (let (a)
+    (dolist (key-action map)
+      (push `(global-set-key ,(car key-action) ,(cdr key-action))
+            a))
+    `(progn ,@a)))
+
+(global-set-keys
+ ([insert] . 'delete-selection-mode) ;; Overwrite mode
+ ((kbd "M-o") . 'other-window)       ;; Instead of C-x o
+ ((kbd "C-[ C-[ C-[") . nil)
+ ((kbd "C-x w") . #'switch-to-buffer-other-window))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -64,6 +74,3 @@
 (load-theme 'tango-dark)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-(define-key global-map (kbd "C-[ C-[ C-[") nil)
-(define-key global-map (kbd "C-x w") #'switch-to-buffer-other-window)
