@@ -11,13 +11,6 @@
 (global-set-key [insert] 'delete-selection-mode) ;; Overwrite mode
 (global-set-key (kbd "M-o") 'other-window) ;; Instead of C-x o
 
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(transient-mark-mode -1)
-(column-number-mode t)
-(desktop-save-mode 1)
-(winner-mode 1)
 
 (require 'package)
 (add-to-list 'package-archives
@@ -47,6 +40,13 @@
                   lisp-interaction-mode-hook)
                 #'enable-paredit-mode)
 
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(transient-mark-mode -1)
+(column-number-mode t)
+(desktop-save-mode 1)
+(winner-mode 1)
 (ivy-mode 1)
 (projectile-mode 1)
 
