@@ -74,3 +74,6 @@
 (load-theme 'tango-dark)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
