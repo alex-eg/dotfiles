@@ -75,5 +75,13 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;;; ERC settings
+;; Kill buffers for channels after /part
+(setq erc-kill-buffer-on-part t)
+;; Kill buffers for private queries after quitting the server
+(setq erc-kill-queries-on-quit t)
+;; Kill buffers for server messages after quitting the server
+(setq erc-kill-server-buffer-on-quit t)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
