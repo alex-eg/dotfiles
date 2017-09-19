@@ -20,6 +20,7 @@
  ([insert] . 'delete-selection-mode) ;; Overwrite mode
  ((kbd "M-o") . 'other-window)       ;; Instead of C-x o
  ((kbd "C-[ C-[ C-[") . nil)
+ ((kbd "C-x /") . #'replace-string)
  ((kbd "C-x w") . #'switch-to-buffer-other-window))
 
 (require 'package)
