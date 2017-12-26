@@ -1,3 +1,12 @@
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+
+(setq-default indent-tabs-mode nil)
+
 (setq slime-lisp-implementations
       '((sbcl ("/usr/local/bin/sbcl"))))
 (setq slime-contribs '(slime-fancy))
@@ -8,28 +17,52 @@
 
 (setq-default c-basic-offset 4)
 
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
-(package-initialize)
-
-(setq-default indent-tabs-mode nil)
-
-(set-face-attribute 'default nil :font "Input Sans-10")
-
-(defun set-monospace-font ()
-  (buffer-face-set '(:family "Input Mono")))
+(set-face-attribute 'default nil :font "Input Mono-10")
 
 (defun add-hook-modes (mode-hook-list hook)
   (dolist (mode-hook mode-hook-list)
     (add-hook mode-hook hook)))
 
-(require 'helm)
-(require 'helm-config)
-(helm-mode 1)
-(helm-projectile-on)
+(use-package alect-themes
+  :config
+  (load-theme 'alect-black))
+
+(use-package use-package
+  :init
+  (setq use-package-always-ensure t))
+
+(use-package helm
+  :demand t
+  :bind (("M-x" . helm-M-x)
+         ("C-x C-f" . helm-find-files)
+         ("C-x b" . helm-mini)
+         ("M-y" . helm-show-kill-ring))
+  :config
+  (helm-mode 1)
+  (helm-projectile-on))
+
+(use-package company
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
+
+(use-package rtags
+  :config
+  (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+  (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+  (rtags-enable-standard-keybindings))
+
+(use-package helm-rtags
+  :config
+  (setq rtags-display-result-backend 'helm))
+
+(use-package company-rtags
+  :init
+  (setq rtags-autostart-diagnostics t)
+  (setq rtags-completions-enabled t)
+  :config
+  (push 'company-rtags company-backends))
+
+(use-package flycheck-rtags)
 
 (defmacro global-set-keys (&rest map)
   (let (a)
@@ -43,25 +76,7 @@
  ((kbd "M-o") . 'other-window)       ;; Instead of C-x o
  ((kbd "C-[ C-[ C-[") . nil)
  ((kbd "C-x /") . #'replace-string)
- ((kbd "C-x w") . #'switch-to-buffer-other-window)
- ((kbd "M-x") . #'helm-M-x)
- ((kbd "C-x C-f") . #'helm-find-files)
- ((kbd "C-x b") . #'helm-mini)
- ((kbd "M-y") . #'helm-show-kill-ring))
-
-(add-hook-modes '(dired-mode-hook
-                       help-mode-hook
-                       minibuffer-setup-hook)
-                #'set-monospace-font)
-
-(add-hook-modes '(lisp-mode-hook
-                  clojure-mode-hook
-                  emacs-lisp-mode-hook
-                  lisp-interaction-mode-hook)
-                #'enable-paredit-mode)
-
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+ ((kbd "C-x w") . #'switch-to-buffer-other-window))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -82,7 +97,11 @@
       column-number-mode t
       c-default-style "k&r")
 
-(load-theme 'tango-dark)
+(use-package paredit
+  :config
+  (add-hook 'clojure-mode-hook #'paredit-mode)
+  (add-hook 'lisp-mode-hook #'paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook #'paredit-mode))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -100,14 +119,6 @@
 
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))
             (c-set-offset 'case-label 0)
             (c-set-offset 'inline-open 0)
-            (c-set-offset 'innamespace 0)))
-
-(add-hook 'ggtags-mode-hook
-          (lambda ()
-            (define-key ggtags-navigation-map (kbd "M-o") nil)
-            (define-key ggtags-navigation-map (kbd "M->") nil)
-            (define-key ggtags-navigation-map (kbd "M-<") nil)))
+            (c-set-offset 'innamespace)))
