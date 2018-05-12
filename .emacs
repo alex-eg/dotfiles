@@ -21,13 +21,16 @@
   (dolist (mode-hook mode-hook-list)
     (add-hook mode-hook hook)))
 
-(use-package alect-themes
-  :config
-  (load-theme 'alect-black))
-
 (use-package use-package
   :init
   (setq use-package-always-ensure t))
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+(use-package alect-themes
+  :config
+  (load-theme 'alect-black))
 
 (use-package helm
   :demand t
@@ -107,8 +110,6 @@
       erc-kill-queries-on-quit t
       erc-kill-server-buffer-on-quit t)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
 (put 'narrow-to-region 'disabled nil)
 
 (add-hook 'c-mode-common-hook
