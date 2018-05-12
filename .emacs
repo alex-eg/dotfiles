@@ -63,6 +63,17 @@
 
 (use-package flycheck-rtags)
 
+(use-package org
+  :bind (("C-c a" . org-agenda)
+         ("C-c c" . org-capture))
+  :config (setq org-log-done t)
+  (setq org-agenda-files
+        (list "~/sync/org/todo.org")))
+
+(use-package reverse-im
+  :config
+  (reverse-im-activate "russian-computer"))
+
 (defmacro global-set-keys (&rest map)
   (let (a)
     (dolist (key-action map)
