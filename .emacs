@@ -6,7 +6,7 @@
 (setq-default indent-tabs-mode nil)
 
 (setq slime-lisp-implementations
-      '((sbcl ("/usr/local/bin/sbcl"))))
+      '((sbcl ("/usr/bin/sbcl"))))
 (setq slime-contribs '(slime-fancy))
 (require 'cl)
 
@@ -45,8 +45,6 @@
 
 (use-package rtags
   :config
-  (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
-  (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
   (rtags-enable-standard-keybindings))
 
 (use-package helm-rtags
@@ -87,8 +85,9 @@
 (electric-indent-mode -1)
 
 (setq default-input-method "russian-computer"
+      browse-url-browser-function 'browse-url-firefox
       browse-url-firefox-new-window-is-tab t
-      browse-url-firefox-program "firefox-bin"
+      browse-url-firefox-program "firefox"
       ring-bell-function 'ignore
       mouse-yank-at-point t
       inhibit-startup-screen t
@@ -103,13 +102,10 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;;; ERC settings
-;; Kill buffers for channels after /part
-(setq erc-kill-buffer-on-part t)
-;; Kill buffers for private queries after quitting the server
-(setq erc-kill-queries-on-quit t)
-;; Kill buffers for server messages after quitting the server
-(setq erc-kill-server-buffer-on-quit t)
+;;; ERC
+(setq erc-kill-buffer-on-part t
+      erc-kill-queries-on-quit t
+      erc-kill-server-buffer-on-quit t)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -119,4 +115,4 @@
           (lambda ()
             (c-set-offset 'case-label 0)
             (c-set-offset 'inline-open 0)
-            (c-set-offset 'innamespace)))
+            (c-set-offset 'innamespace 0)))
