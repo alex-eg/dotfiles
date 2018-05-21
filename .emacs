@@ -32,6 +32,8 @@
   :config
   (load-theme 'alect-black))
 
+(use-package magit)
+
 (use-package projectile
   :config
   (projectile-mode 1))
