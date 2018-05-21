@@ -32,6 +32,10 @@
   :config
   (load-theme 'alect-black))
 
+(use-package projectile
+  :config
+  (projectile-mode 1))
+
 (use-package helm
   :demand t
   :bind (("M-x" . helm-M-x)
@@ -39,7 +43,10 @@
          ("C-x b" . helm-mini)
          ("M-y" . helm-show-kill-ring))
   :config
-  (helm-mode 1)
+  (helm-mode 1))
+
+(use-package helm-projectile
+  :config
   (helm-projectile-on))
 
 (use-package company
@@ -95,7 +102,6 @@
 (column-number-mode t)
 (desktop-save-mode 1)
 (winner-mode 1)
-(projectile-mode 1)
 (electric-indent-mode -1)
 
 (setq default-input-method "russian-computer"
