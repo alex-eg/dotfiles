@@ -83,6 +83,9 @@
   :config
   (reverse-im-activate "russian-computer"))
 
+(use-package which-key
+  :config (which-key-mode))
+
 (defmacro global-set-keys (&rest map)
   (let (a)
     (dolist (key-action map)
