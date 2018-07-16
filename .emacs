@@ -125,14 +125,16 @@
   (add-hook 'lisp-mode-hook #'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'paredit-mode))
 
+(use-package fancy-narrow
+  :config
+  (fancy-narrow-mode 1))
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;; ERC
 (setq erc-kill-buffer-on-part t
       erc-kill-queries-on-quit t
       erc-kill-server-buffer-on-quit t)
-
-(put 'narrow-to-region 'disabled nil)
 
 (add-hook 'c-mode-common-hook
           (lambda ()
