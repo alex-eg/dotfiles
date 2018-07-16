@@ -139,5 +139,6 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-offset 'case-label 0)
+            (c-set-offset 'inlambda 0)
             (c-set-offset 'inline-open 0)
             (c-set-offset 'innamespace 0)))
