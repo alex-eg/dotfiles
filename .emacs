@@ -129,6 +129,9 @@
   :config
   (fancy-narrow-mode 1))
 
+(use-package org-journal
+  :init (setq org-journal-dir "~/dev/journal"))
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;; ERC
