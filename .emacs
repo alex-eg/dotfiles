@@ -134,11 +134,6 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;;; ERC
-(setq erc-kill-buffer-on-part t
-      erc-kill-queries-on-quit t
-      erc-kill-server-buffer-on-quit t)
-
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-offset 'case-label 0)
