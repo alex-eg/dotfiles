@@ -36,6 +36,8 @@
 
 (use-package projectile
   :config
+  (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
+  (setq projectile-enable-caching t)
   (projectile-mode 1))
 
 (use-package helm
