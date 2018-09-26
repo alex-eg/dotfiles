@@ -47,7 +47,8 @@
          ("C-x b" . helm-mini)
          ("M-y" . helm-show-kill-ring))
   :config
-  (helm-mode 1))
+  (helm-mode 1)
+  (setq helm-buffer-max-length nil))
 
 (use-package helm-projectile
   :config
