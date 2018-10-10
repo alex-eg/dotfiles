@@ -34,25 +34,50 @@
 
 (use-package magit)
 
+(use-package ivy-hydra
+  :ensure t)
+(use-package ivy-rtags
+  :ensure t)
+
 (use-package projectile
   :config
   (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
   (setq projectile-enable-caching t)
   (projectile-mode 1))
 
-(use-package helm
-  :demand t
-  :bind (("M-x" . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ("C-x b" . helm-mini)
-         ("M-y" . helm-show-kill-ring))
+(use-package counsel
+  :ensure t
+  :delight
+  :defer nil
+  :bind (([remap menu-bar-open] . counsel-tmm)
+         ([remap insert-char] . counsel-unicode-char)
+         ([remap isearch-forward] . counsel-grep-or-swiper))
   :config
-  (helm-mode 1)
-  (setq helm-buffer-max-length nil))
+  (counsel-mode))
 
-(use-package helm-projectile
+(use-package ivy
+  :ensure t
+  :delight
+  :custom
+  (ivy-use-virtual-buffers t)
+  (ivy-re-builders-alist '((t . ivy--regex-fuzzy) (t . ivy-regex-plus)))
+  (ivy-count-format "%d/%d " "Show anzu-like counter.")
+  (ivy-use-selectable-prompt t "Make the prompt line selectable")
+  :bind ("C-c C-r" . ivy-resume)
   :config
-  (helm-projectile-on))
+  (ivy-mode t))
+
+(use-package ivy-rich
+  :ensure t
+  :after ivy
+  :config
+  (ivy-rich-mode))
+
+(use-package counsel-projectile
+  :ensure t
+  :after counsel projectile
+  :config
+  (counsel-projectile-mode))
 
 (use-package company
   :config
@@ -61,10 +86,6 @@
 (use-package rtags
   :config
   (rtags-enable-standard-keybindings))
-
-(use-package helm-rtags
-  :config
-  (setq rtags-display-result-backend 'helm))
 
 (use-package company-rtags
   :init
