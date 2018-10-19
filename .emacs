@@ -51,7 +51,8 @@
   :defer nil
   :bind (([remap menu-bar-open] . counsel-tmm)
          ([remap insert-char] . counsel-unicode-char)
-         ([remap isearch-forward] . counsel-grep-or-swiper))
+         ([remap isearch-forward] . counsel-grep-or-swiper)
+         ([remap isearch-backward] . counsel-grep-or-swiper))
   :config
   (counsel-mode))
 
