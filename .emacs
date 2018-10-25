@@ -150,10 +150,6 @@
   (add-hook 'lisp-mode-hook #'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'paredit-mode))
 
-(use-package fancy-narrow
-  :config
-  (fancy-narrow-mode 1))
-
 (use-package org-journal
   :init (setq org-journal-dir "~/dev/journal"))
 
