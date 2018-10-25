@@ -61,7 +61,7 @@
   :delight
   :custom
   (ivy-use-virtual-buffers t)
-  (ivy-re-builders-alist '((t . ivy--regex-fuzzy) (t . ivy-regex-plus)))
+  (ivy-re-builders-alist '((t . ivy-regex-plus) (t . ivy--regex-fuzzy)))
   (ivy-count-format "%d/%d " "Show anzu-like counter.")
   (ivy-use-selectable-prompt t "Make the prompt line selectable")
   :bind ("C-c C-r" . ivy-resume)
