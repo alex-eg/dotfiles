@@ -1,0 +1,16 @@
+*** Syncthing keep alive servie
+    Very simple solution to make sure that syncthing is up and running
+    at most times, and also accessible via automatically started
+    screen session.
+
+*** Prerequisites
+   * syncthing
+   * screen
+   * cron
+
+*** Usage
+    Place ~check-syncthing.sh~ somewhere in you path, and add it's
+    invocation to your crontab.
+
+*** Known limitations
+    * Doesn't clean pid file even after successfull shutdown.
