@@ -1,0 +1,3 @@
+* \ldquo{}Dotfiles\rdquo{}
+A collection of small miscellaneous configs and scripts.
+Each one has its own README.
