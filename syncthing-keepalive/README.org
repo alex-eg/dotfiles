@@ -1,4 +1,4 @@
-*** Syncthing keep alive servie
+*** Syncthing keep alive service
     Very simple solution to make sure that syncthing is up and running
     at most times, and also accessible via automatically started
     screen session.
@@ -23,4 +23,4 @@
     Also don't forget to make the script executable.
 
 *** Known limitations
-    * Doesn't clean pid file even after successfull shutdown.
+    * Doesn't clean pid file even after successful shutdown.
