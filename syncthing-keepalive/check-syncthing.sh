@@ -7,7 +7,7 @@ is_syncthing_running() {
     if [[ ! -f "${pid_file}" ]]; then
         return 1
     else
-        pid=$(<"${pid_file}")
+        local pid=$(<"${pid_file}")
         if ! kill -0 "$pid" >/dev/null 2>&1; then
             rm -f "${pid_file}"
             return 1
@@ -22,6 +22,13 @@ if ! is_syncthing_running; then
     fi
     screen -DmS "${screen_name}" syncthing &
     screen_pid=$!
-    shell_pid=$(ps h --ppid "${screen_pid}" -opid)
-    ps h --ppid "${shell_pid}" -opid > "${pid_file}"
+    shell_pid=''
+    while [[ -z "${shell_pid}" ]]; do
+        shell_pid=$(ps h --ppid "${screen_pid}" -opid 2>/dev/null)
+    done
+    pid=''
+    while [[ -z "${pid}" ]]; do
+        pid=$(ps h --ppid "${shell_pid}" -opid 2>/dev/null)
+    done
+    echo "${pid}" > "${pid_file}"
 fi
