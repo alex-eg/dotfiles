@@ -31,4 +31,5 @@ if ! is_syncthing_running; then
         pid=$(ps h --ppid "${shell_pid}" -opid 2>/dev/null)
     done
     echo "${pid}" > "${pid_file}"
+    echo "Syncthing started successfully, pid is ${pid}"
 fi
