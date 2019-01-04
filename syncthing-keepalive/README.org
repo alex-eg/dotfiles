@@ -12,5 +12,15 @@
     Place ~check-syncthing.sh~ somewhere in you path, and add it's
     invocation to your crontab.
 
+    You also might want to use the ~timeout~ utility, since the script
+    contains while loops which in theory can stuck in an endless loop.
+
+    So, your crontab entry for this script might look like this:
+    #+BEGIN_SRC
+    */10 * * * * /usr/bin/timeout -s 2 5 ~/bin/check-syncthing.sh
+    #+END_SRC
+
+    Also don't forget to make the script executable.
+
 *** Known limitations
     * Doesn't clean pid file even after successfull shutdown.
