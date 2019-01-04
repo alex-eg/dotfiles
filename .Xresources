@@ -22,6 +22,6 @@ URxvt*color15: #d0d0d0
 
 
 URxvt*font: 8x13,
-            xft:Unifont
+xft:Unifont
 
 Rxvt*saveLines: 8192
