@@ -22,5 +22,6 @@ if ! is_syncthing_running; then
     fi
     screen -DmS "${screen_name}" syncthing &
     screen_pid=$!
-    # todo! find pid of syncthing and store it to pid file
+    shell_pid=$(ps h --ppid "${screen_pid}" -opid)
+    ps h --ppid "${shell_pid}" -opid > "${pid_file}"
 fi
