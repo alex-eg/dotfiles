@@ -1,0 +1,10 @@
+* Xorg configuraion
+~.xinitrc~ executes its contents when an X session is started via
+~xinit~. ~strartx~ is a frontend for ~xinit~, so this applies to it
+too.
+
+This ~.xinitrc~ contains lines to let know all GUI applications in the
+session about fcitx input method.
+
+~.Xresources~ contains urxvt config for color scheme (beautiful
+molokai theme) and fonts.
