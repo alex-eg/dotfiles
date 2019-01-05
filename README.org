@@ -1,3 +1,11 @@
 * \ldquo{}Dotfiles\rdquo{}
 A collection of small miscellaneous configs and scripts.
-Each one has its own README.
+Some have their own README.
+
+ * [[./awesome][awesome]] - config and a couple of extension widgets for [[https://awesomewm.org/][awesome WM]]
+ * [[./emacs][emacs]] - .emacs file
+ * [[./firefox][firefox]] - userChrome.css for [[http://piro.sakura.ne.jp/xul/_treestyletab.html.en][tree tabs extension]] for modern Firefox
+ * [[./syncthing-keepalive][syncthing-keepalive]] - small cron script for keeping [[https://syncthing.net/][syncthing]] up
+   and running all the time
+ * [[./xkb_config][xkb_config]] - sources of better keyboard layout for X11
+ * [[./xorg][xorg]] - .xinitrc and .Xresources for X11
