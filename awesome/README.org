@@ -1,0 +1,6 @@
+* Awesome WM config
+Aimed for T410 Lenovo laptop. Features battery and volume widgets with
+tray icons and notifications.
+
+* Installation
+Copy to =~/.config/awesome/=, restart awesome.
