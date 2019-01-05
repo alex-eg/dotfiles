@@ -1,0 +1,4 @@
+* userChrome.css
+  Chrome [[https://developer.mozilla.org/en-US/docs/Glossary/Chrome][is Firefox UI]], and userChrome.css is a file for user UI
+  settings. This particular setup removes tabs toolbar and sidebar
+  header, which combines nice with the use of tree tabs extension.
