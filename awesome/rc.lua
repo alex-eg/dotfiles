@@ -68,11 +68,6 @@ end
 fd:close()
 
 awful.util.spawn_with_shell("xscreensaver &", false)
-awful.util.spawn_with_shell(
-   "xmodmap -e 'remove Control = Control_L' -e 'keycode 37 = F13'")
-awful.util.spawn_with_shell(
-   "xmodmap -e 'clear Lock' -e 'keycode 66 = Control_L' -e 'add Control = Control_L'")
-
 awful.util.spawn_with_shell("fcitx -r")
 
 -- @DOC_LAYOUT@
