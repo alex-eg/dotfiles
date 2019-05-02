@@ -161,3 +161,20 @@
             (c-set-offset 'inlambda 0)
             (c-set-offset 'inline-open 0)
             (c-set-offset 'innamespace 0)))
+
+;;; LSP
+(use-package lsp-mode
+  :commands lsp
+  :init
+  (add-hook 'rust-mode-hook #'lsp))
+
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :config (setq lsp-ui-doc-enable nil
+                lsp-ui-peek-enable nil
+                lsp-ui-sideline-enable nil
+                lsp-ui-imenu-enable nil
+                lsp-ui-flycheck-enable t))
+
+(use-package company-lsp
+  :commands company-lsp)
