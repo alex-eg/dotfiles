@@ -164,6 +164,10 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(put 'narrow-to-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-offset 'case-label 0)
