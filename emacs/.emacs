@@ -29,17 +29,6 @@
   :config
   (load-theme 'alect-black))
 
-(use-package magit)
-
-(use-package ivy-hydra
-  :ensure t)
-
-(use-package projectile
-  :config
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-enable-caching t)
-  (projectile-mode 1))
-
 (use-package counsel
   :ensure t
   :delight
@@ -63,6 +52,9 @@
   :config
   (ivy-mode t))
 
+(use-package ivy-hydra
+  :ensure t)
+
 (use-package ivy-rich
   :ensure t
   :after ivy
@@ -75,12 +67,18 @@
   :config
   (counsel-projectile-mode))
 
+(use-package projectile
+  :config
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setq projectile-enable-caching t)
+  (projectile-mode 1))
+
+(use-package magit)
+
 (use-package company
+  :bind (("C-<tab>" . company-complete))
   :config
   (add-hook 'after-init-hook 'global-company-mode))
-
-
-  :config
 
 (use-package ccls
   :hook ((c-mode c++-mode objc-mode) .
@@ -92,6 +90,9 @@
   :config (setq org-log-done t)
   (setq org-agenda-files
         (list "~/sync/org/todo.org")))
+
+(use-package org-journal
+  :init (setq org-journal-dir "~/dev/journal"))
 
 (use-package reverse-im
   :config
@@ -158,9 +159,6 @@
   (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'lisp-mode-hook #'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'paredit-mode))
-
-(use-package org-journal
-  :init (setq org-journal-dir "~/dev/journal"))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
