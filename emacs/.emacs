@@ -33,8 +33,6 @@
 
 (use-package ivy-hydra
   :ensure t)
-(use-package ivy-rtags
-  :ensure t)
 
 (use-package projectile
   :config
@@ -81,18 +79,12 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package rtags
-  :config
-  (rtags-enable-standard-keybindings))
 
-(use-package company-rtags
-  :init
-  (setq rtags-autostart-diagnostics t)
-  (setq rtags-completions-enabled t)
   :config
-  (push 'company-rtags company-backends))
 
-(use-package flycheck-rtags)
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp))))
 
 (use-package org
   :bind (("C-c a" . org-agenda)
