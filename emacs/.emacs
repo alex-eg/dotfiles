@@ -5,13 +5,10 @@
 
 (setq-default indent-tabs-mode nil)
 
-(setq slime-lisp-implementations
-      '((sbcl ("/usr/bin/sbcl"))))
-(setq slime-contribs '(slime-fancy))
-(require 'cl)
-
 ;;; Local CLHS browsing!
 (load "~/quicklisp/clhs-use-local.el" t)
+
+(use-package sly)
 
 (setq-default c-basic-offset 4)
 
