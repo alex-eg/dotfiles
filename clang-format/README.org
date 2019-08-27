@@ -1,0 +1,12 @@
+* Clang-format
+Smaple config for ~clang-format~.
+
+Usage: copy sample to your cpp project dir root, renaming it to
+~.clang-format~, adjust if needed, then call
+ ~clang-format --style=file -i <path-to-file>~
+
+To format all files at once, use the following method:
+
+ ~find . -type f -not -path '*/.*' -type f \( -name '*.cpp' -o -name '*.hpp' \) -exec clang-format --style=file -i {} \;~
+
+Clang format options quick overview: [[http://clangformat.com/]]
