@@ -8,7 +8,12 @@
 ;;; Local CLHS browsing!
 (load "~/quicklisp/clhs-use-local.el" t)
 
-(use-package sly)
+(use-package sly
+  :config (add-hook 'lisp-mode-hook
+                    (lambda ()
+                      (setq lisp-indent-function 'common-lisp-indent-function)
+                      (company-mode)
+                      (common-lisp-set-style "classic"))))
 
 (setq-default c-basic-offset 4)
 
