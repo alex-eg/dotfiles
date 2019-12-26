@@ -104,8 +104,9 @@
 ;;; LSP
 (use-package lsp-mode
   :commands lsp
-  :init
-  (add-hook 'rust-mode-hook #'lsp))
+  :init (add-hook 'rust-mode-hook #'lsp)
+  :config (setq lsp-enable-snippet nil
+                lsp-file-watch-threshold nil))
 
 (use-package lsp-ui
   :commands lsp-ui-mode
