@@ -9,11 +9,24 @@
 (load "~/quicklisp/clhs-use-local.el" t)
 
 (use-package sly
-  :config (add-hook 'lisp-mode-hook
-                    (lambda ()
-                      (setq lisp-indent-function 'common-lisp-indent-function)
-                      (company-mode)
-                      (common-lisp-set-style "classic"))))
+  :ensure t
+  :custom
+  (inferior-lisp-program "sbcl")
+  (lisp-indent-function 'common-lisp-indent-function)
+  :hook (lisp-mode . sly-mode))
+;;; To be able to indent Common Lisp properly, 2 things needed:
+;;; 1. connection with Sly should be established
+;;; 2. Buffer-local lisp-indent-function variable should be set to Sly-
+;;;    provided 'common-lisp-indent-function.
+(add-hook 'sly-mode-hook
+          (lambda ()
+            (unless (sly-connected-p)
+              (save-excursion (sly)))
+            (setq common-lisp-style "classic")))
+
+(use-package elisp-mode
+  :custom
+  (lisp-indent-function 'lisp-indent-function))
 
 (setq-default c-basic-offset 4)
 
