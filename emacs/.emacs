@@ -110,7 +110,9 @@
         (list "~/sync/org/todo.org")))
 
 (use-package org-journal
-  :init (setq org-journal-dir "~/dev/journal"))
+  :init (setq
+         org-journal-file-type 'yearly
+         org-journal-dir "~/dev/journal"))
 
 (use-package reverse-im
   :config
