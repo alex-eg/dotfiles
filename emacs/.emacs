@@ -114,6 +114,11 @@
          org-journal-file-type 'yearly
          org-journal-dir "~/dev/journal"))
 
+(add-hook 'org-journal-mode-hook
+          (lambda ()
+            (set-fill-column 80)
+            (auto-fill-mode)))
+
 (use-package reverse-im
   :config
   (reverse-im-activate "russian-computer"))
