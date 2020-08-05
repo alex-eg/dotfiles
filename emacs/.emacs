@@ -176,10 +176,8 @@
       c-default-style "k&r")
 
 (use-package paredit
-  :config
-  (add-hook 'clojure-mode-hook #'paredit-mode)
-  (add-hook 'lisp-mode-hook #'paredit-mode)
-  (add-hook 'emacs-lisp-mode-hook #'paredit-mode))
+  :commands paredit-mode
+  :hook (clojure-mode lisp-mode emacs-lisp-mode))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
