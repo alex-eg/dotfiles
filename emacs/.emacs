@@ -160,6 +160,7 @@
  ((kbd "C-[ C-[ C-[") . nil)
  ((kbd "C-x /") . #'replace-string)
  ((kbd "C-x w") . #'switch-to-buffer-other-window)
+ ((kbd "C-c C-r") . #'ivy-resume)
  ((kdb "C-x m f" .#'magit-find-file)))
 
 (tool-bar-mode -1)
