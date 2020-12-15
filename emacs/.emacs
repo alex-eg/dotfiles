@@ -95,7 +95,7 @@
   :ensure t
   :delight
   :custom
-  (magit-bury-buffer-function #'quit-window)
+  (magit-bury-buffer-function #'kill-buffer)
   :bind
   (:map mode-specific-map
         :prefix-map magit-prefix-map
