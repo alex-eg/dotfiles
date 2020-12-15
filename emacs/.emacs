@@ -91,7 +91,21 @@
   (setq projectile-enable-caching t)
   (projectile-mode 1))
 
-(use-package magit)
+(use-package magit
+  :ensure t
+  :delight
+  :custom
+  (magit-bury-buffer-function #'quit-window)
+  :bind
+  (:map mode-specific-map
+        :prefix-map magit-prefix-map
+        :prefix "m"
+        ("b" . #'magit-blame-addition)
+        ("B" . #'magit-branch-create)
+        ("c" . #'magit-checkout)
+        ("C" . #'magit-commit-create)
+        ("f" . #'magit-find-file)
+        ("l" . #'magit-log-buffer-file)))
 
 (use-package company
   :bind (("C-<tab>" . company-complete))
@@ -160,8 +174,7 @@
  ((kbd "C-[ C-[ C-[") . nil)
  ((kbd "C-x /") . #'replace-string)
  ((kbd "C-x w") . #'switch-to-buffer-other-window)
- ((kbd "C-c C-r") . #'ivy-resume)
- ((kdb "C-x m f" .#'magit-find-file)))
+ ((kbd "C-c C-r") . #'ivy-resume))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
