@@ -159,7 +159,8 @@
  ((kbd "M-o") . 'other-window)       ;; Instead of C-x o
  ((kbd "C-[ C-[ C-[") . nil)
  ((kbd "C-x /") . #'replace-string)
- ((kbd "C-x w") . #'switch-to-buffer-other-window))
+ ((kbd "C-x w") . #'switch-to-buffer-other-window)
+ ((kdb "C-x m f" .#'magit-find-file)))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
