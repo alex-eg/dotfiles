@@ -32,10 +32,6 @@
 
 (set-face-attribute 'default nil :font "Input Mono-10")
 
-(defun add-hook-modes (mode-hook-list hook)
-  (dolist (mode-hook mode-hook-list)
-    (add-hook mode-hook hook)))
-
 (use-package use-package
   :init
   (setq use-package-always-ensure t))
