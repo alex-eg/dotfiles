@@ -181,7 +181,6 @@
 (scroll-bar-mode -1)
 (transient-mark-mode -1)
 (column-number-mode t)
-(desktop-save-mode 1)
 (winner-mode 1)
 (electric-indent-mode -1)
 
