@@ -115,8 +115,10 @@
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture))
   :config (setq org-log-done t)
-  (setq org-agenda-files
-        (list "~/sync/org/todo.org")))
+  (setq org-agenda-files '("~/sync/org.org"
+                           "~/sync/todo.org")
+        org-refile-targets '(("~/sync/org.org" :maxlevel . 3)
+                             ("~/sync/todo.org" :maxlevel . 2))))
 
 (use-package org-journal
   :init (setq
