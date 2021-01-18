@@ -12,17 +12,10 @@
   :ensure t
   :custom
   (inferior-lisp-program "sbcl")
-  (lisp-indent-function 'common-lisp-indent-function)
-  :hook (lisp-mode . sly-mode))
-;;; To be able to indent Common Lisp properly, 2 things needed:
-;;; 1. connection with Sly should be established
-;;; 2. Buffer-local lisp-indent-function variable should be set to Sly-
-;;;    provided 'common-lisp-indent-function.
-(add-hook 'sly-mode-hook
-          (lambda ()
-            (unless (sly-connected-p)
-              (save-excursion (sly)))
-            (setq common-lisp-style "classic")))
+  :config (defun set-common-lisp-style ()
+            (setq-local common-lisp-style "classic"))
+  :hook ((lisp-mode . sly-mode)
+         (lisp-mode . set-common-lisp-style)))
 
 (use-package elisp-mode
   :custom
