@@ -105,8 +105,7 @@
 
 (use-package company
   :bind (("C-<tab>" . company-complete))
-  :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  :hook (after-init . global-company-mode))
 
 (use-package ccls
   :hook ((c-mode c++-mode objc-mode) .
@@ -122,12 +121,10 @@
 (use-package org-journal
   :init (setq
          org-journal-file-type 'yearly
-         org-journal-dir "~/dev/journal"))
-
-(add-hook 'org-journal-mode-hook
-          (lambda ()
-            (set-fill-column 80)
-            (auto-fill-mode)))
+         org-journal-dir "~/dev/journal")
+  :hook (org-journal-mode . (lambda ()
+                              (set-fill-column 80)
+                              (auto-fill-mode))))
 
 (use-package reverse-im
   :config
@@ -139,7 +136,7 @@
 ;;; LSP
 (use-package lsp-mode
   :commands lsp
-  :init (add-hook 'rust-mode-hook #'lsp)
+  :hook (rust-mode . lsp)
   :config (setq lsp-enable-snippet nil
                 lsp-file-watch-threshold nil))
 
