@@ -180,3 +180,9 @@
             (c-set-offset 'inlambda 0)
             (c-set-offset 'inline-open 0)
             (c-set-offset 'innamespace 0)))
+
+(define-advice kill-ring-save (:before (beg end &optional region) pulse-kill-save)
+  (save-mark-and-excursion
+    (let ((beg (if region (region-beginning) beg))
+          (end (if region (region-end) end)))
+      (pulse-momentary-highlight-region beg end 'region))))
