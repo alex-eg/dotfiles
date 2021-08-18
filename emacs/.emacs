@@ -145,6 +145,7 @@
  ((kbd "C-x /") . #'replace-string)
  ((kbd "C-x w") . #'switch-to-buffer-other-window)
  ((kbd "C-c C-r") . #'ivy-resume))
+ ((kbd "C-c l") . "λ"))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
