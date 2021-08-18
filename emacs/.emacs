@@ -8,6 +8,10 @@
 ;;; Local CLHS browsing!
 (load "~/quicklisp/clhs-use-local.el" t)
 
+(use-package use-package
+  :init
+  (setq use-package-always-ensure t))
+
 (use-package sly
   :ensure t
   :custom
@@ -24,10 +28,6 @@
 (setq-default c-basic-offset 4)
 
 (set-face-attribute 'default nil :font "Input Mono-10")
-
-(use-package use-package
-  :init
-  (setq use-package-always-ensure t))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
