@@ -32,9 +32,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-(use-package alect-themes
+(use-package tango-plus-theme
   :config
-  (load-theme 'alect-black))
+  (load-theme 'tango-plus))
 
 (use-package counsel
   :ensure t
