@@ -16,8 +16,12 @@
   :ensure t
   :custom
   (inferior-lisp-program "sbcl")
+  :config (sly-define-common-lisp-style "lbge"
+            (:inherit "classic")
+            (:indentation
+             (λ (as lambda))))
   :config (defun set-common-lisp-style ()
-            (setq-local common-lisp-style "classic"))
+            (setq-local common-lisp-style "lbge"))
   :hook ((lisp-mode . sly-mode)
          (lisp-mode . set-common-lisp-style)))
 
