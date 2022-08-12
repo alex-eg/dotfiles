@@ -35,9 +35,11 @@
   :init
   (setq use-package-always-ensure t))
 
-(use-package tango-plus-theme
+(use-package projectile
   :config
-  (load-theme 'tango-plus))
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setq projectile-enable-caching t)
+  (projectile-mode 1))
 
 (use-package counsel
   :ensure t
@@ -77,11 +79,6 @@
   :config
   (counsel-projectile-mode))
 
-(use-package projectile
-  :config
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-enable-caching t)
-  (projectile-mode 1))
 
 (use-package magit
   :ensure t
@@ -184,6 +181,8 @@
             (c-set-offset 'inlambda 0)
             (c-set-offset 'inline-open 0)
             (c-set-offset 'innamespace 0)))
+(load-theme 'modus-operandi t)
+(set-face-attribute 'fringe nil :background "#f0f0f0" :foreground "#6d6d6d")
 
 (define-advice kill-ring-save (:before (beg end &optional region) pulse-kill-save)
   (save-mark-and-excursion
