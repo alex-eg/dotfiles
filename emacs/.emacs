@@ -8,9 +8,7 @@
 ;;; Local CLHS browsing!
 (load "~/quicklisp/clhs-use-local.el" t)
 
-(use-package use-package
-  :init
-  (setq use-package-always-ensure t))
+(setq default-directory "~/")
 
 (use-package sly
   :ensure t
@@ -33,8 +31,9 @@
 
 (set-face-attribute 'default nil :font "Input Mono-10")
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(use-package use-package
+  :init
+  (setq use-package-always-ensure t))
 
 (use-package tango-plus-theme
   :config
