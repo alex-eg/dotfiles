@@ -41,50 +41,41 @@
   (setq projectile-enable-caching t)
   (projectile-mode 1))
 
-(use-package counsel
+(use-package paredit
   :ensure t
-  :delight
-  :defer nil
-  :bind (([remap menu-bar-open] . counsel-tmm)
-         ([remap insert-char] . counsel-unicode-char)
-         ([remap isearch-forward] . counsel-grep-or-swiper)
-         ([remap isearch-backward] . counsel-grep-or-swiper))
-  :config
-  (counsel-mode))
+  :hook ((clojure-mode lisp-mode emacs-lisp-mode) . paredit-mode))
 
-(use-package ivy
+(use-package paredit
   :ensure t
-  :delight
+  :hook ((clojure-mode lisp-mode emacs-lisp-mode) . paredit-mode))
+
+(use-package vertico
+  :init (vertico-mode))
+
+(use-package consult
+  :preface
+  (defvar consult-prefix-map (make-sparse-keymap))
+  (fset 'consult-prefix-map consult-prefix-map)
+  :bind (:map ctl-x-map ("c" . consult-prefix-map)
+         :map consult-prefix-map
+         ("r" . consult-recent-file)
+         ("o" . consult-outline)
+         ("i" . consult-imenu)
+         ("g" . consult-grep))
   :custom
-  (ivy-use-virtual-buffers t)
-  (ivy-re-builders-alist '((t . ivy-regex-plus) (t . ivy--regex-fuzzy)))
-  (ivy-count-format "%d/%d " "Show anzu-like counter.")
-  (ivy-use-selectable-prompt t "Make the prompt line selectable")
-  :bind ("C-c C-r" . ivy-resume)
-  :config
-  (ivy-mode t))
+  (consult-preview-key nil)
+  :init
+  (setq completion-in-region-function #'consult-completion-in-region))
 
-(use-package ivy-hydra
-  :ensure t)
-
-(use-package ivy-rich
-  :ensure t
-  :after ivy
-  :config
-  (ivy-rich-mode))
-
-(use-package counsel-projectile
-  :ensure t
-  :after counsel projectile
-  :config
-  (counsel-projectile-mode))
-
+(use-package marginalia
+  :bind (("M-A" . marginalia-cycle))
+  :init (marginalia-mode))
 
 (use-package magit
-  :ensure t
   :delight
   :custom
-  (magit-bury-buffer-function #'kill-buffer)
+  (magit-bury-buffer-function
+   (lambda (kill) (kill-buffer)))
   :bind
   (:map mode-specific-map
         :prefix-map magit-prefix-map
@@ -96,9 +87,19 @@
         ("f" . #'magit-find-file)
         ("l" . #'magit-log-buffer-file)))
 
-(use-package company
-  :bind (("C-<tab>" . company-complete))
-  :hook (after-init . global-company-mode))
+(use-package orderless
+  :demand t
+  :config
+  (setq completion-styles '(orderless partial-completion)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles . (partial-completion)))
+                                        (eglot (styles . (orderless flex))))))
+
+(use-package corfu
+  :bind
+  (([C-tab] . #'completion-at-point))
+  :init
+  (global-corfu-mode))
 
 (use-package org
   :bind (("C-c a" . org-agenda)
@@ -144,7 +145,6 @@
  ((kbd "C-[ C-[ C-[") . nil)
  ((kbd "C-x /") . #'replace-string)
  ((kbd "C-x w") . #'switch-to-buffer-other-window)
- ((kbd "C-c C-r") . #'ivy-resume))
  ((kbd "C-c l") . "λ"))
 
 (tool-bar-mode -1)
@@ -163,11 +163,7 @@
       mouse-yank-at-point t
       inhibit-startup-screen t
       column-number-mode t
-      c-default-style "k&r")
-
-(use-package paredit
-  :commands paredit-mode
-  :hook (clojure-mode lisp-mode emacs-lisp-mode))
+      cmake-tab-width 4)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
