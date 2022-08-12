@@ -214,3 +214,19 @@
            map beg end
            backward
            region-noncontiguous-p)))
+
+(use-package quelpa
+  :demand t
+  :custom (quelpa-update-melpa-p nil))
+
+(use-package quelpa-use-package
+  :demand t)
+
+(use-package vterm
+  :ensure t)
+
+(use-package yasnippet
+  :custom
+  (yas-snippet-dirs '("~/dev/yasnippets/"))
+  :config
+  (yas-global-mode 1))
