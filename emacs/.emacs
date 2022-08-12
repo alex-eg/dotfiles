@@ -127,7 +127,10 @@
   :hook ((c-mode c++-mode objc-mode) .
          'eglot-ensure)
   :config (add-to-list 'eglot-server-programs
-                       '((c++-mode c-mode objc-mode) "clangd")))
+                       (list '(c++-mode c-mode objc-mode) .
+                             (if (eq system-type 'darwin)
+                                 ("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clangd" "--header-insertion=never" "--clang-tidy" "--fallback-style=\"{ BasedOnStyle: LLVM, IndentWidth: 4, Standard: c++20 }\"")
+                               "clangd"))))
 
 (defmacro global-set-keys (&rest map)
   (let (a)
