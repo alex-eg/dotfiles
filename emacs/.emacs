@@ -122,9 +122,6 @@
   :config
   (reverse-im-activate "russian-computer"))
 
-(use-package which-key
-  :config (which-key-mode))
-
 ;;; Eglot
 (use-package eglot
   :hook ((c-mode c++-mode objc-mode) .
@@ -151,7 +148,6 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (transient-mark-mode -1)
-(column-number-mode t)
 (winner-mode 1)
 (electric-indent-mode -1)
 
@@ -171,12 +167,25 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (setq nxml-child-indent 4
+                  nxml-attribute-indent 4)))
+
+(c-add-style "my-style"
+             '("k&r"
+               (c-basic-offset . 4)
+               (case-label . 0)
+               (inlambda . 0)
+               (inline-open . 0)
+               (innamespace . 4)))
+
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (c-set-offset 'case-label 0)
-            (c-set-offset 'inlambda 0)
-            (c-set-offset 'inline-open 0)
-            (c-set-offset 'innamespace 0)))
+            (c-set-style "my-style")))
+
+(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
+
 (load-theme 'modus-operandi t)
 (set-face-attribute 'fringe nil :background "#f0f0f0" :foreground "#6d6d6d")
 
