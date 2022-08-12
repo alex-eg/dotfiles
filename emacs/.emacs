@@ -29,7 +29,7 @@
 
 (setq-default c-basic-offset 4)
 
-(set-face-attribute 'default nil :font "Input Mono-10")
+(set-face-attribute 'default nil :font "Iosevka Custom 12")
 
 (use-package use-package
   :init
