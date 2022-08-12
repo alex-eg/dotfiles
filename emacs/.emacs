@@ -194,3 +194,23 @@
     (let ((beg (if region (region-beginning) beg))
           (end (if region (region-end) end)))
       (pulse-momentary-highlight-region beg end 'region))))
+
+(define-advice perform-replace (:around (original-fun
+                                         from-string replacements
+		                         query-flag regexp-flag
+                                         delimited-flag
+			                 &optional repeat-count
+                                         map start end
+                                         backward
+                                         region-noncontiguous-p)
+                                        activate-region)
+  (let ((beg (region-beginning))
+        (end (region-end)))
+    (pulse-momentary-highlight-region beg end 'region)
+    (apply original-fun from-string replacements
+	   query-flag regexp-flag
+           delimited-flag
+	   repeat-count
+           map beg end
+           backward
+           region-noncontiguous-p)))
