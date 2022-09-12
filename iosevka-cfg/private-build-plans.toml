@@ -1,0 +1,14 @@
+[buildPlans.iosevka-custom]
+family = "Iosevka Custom"
+spacing = "fixed"
+serifs = "slab"
+no-cv-ss = true
+no-ligation = true
+
+  [buildPlans.iosevka-custom.variants]
+  inherits = "ss15"
+
+    [buildPlans.iosevka-custom.variants.design]
+    number-sign = "slanted"
+    percent = "rings-continuous-slash"
+    apl-form = "enable"
