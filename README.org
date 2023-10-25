@@ -9,3 +9,6 @@ Some have their own README.
    and running all the time
  * [[./xkb_config][xkb_config]] - sources of better keyboard layout for X11
  * [[./xorg][xorg]] - .xinitrc and .Xresources for X11
+ * [[./winkeys][Win keys fix]] - fix for keys on windows: caps lock/ctrl, left
+   alt/meta (win key) swap, and general info about remapping keys on
+   Windows.

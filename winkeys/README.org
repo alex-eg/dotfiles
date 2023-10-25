@@ -1,0 +1,209 @@
+To apply mapping create .reg file and double click it.
+
+* Remap Capslock to Control
+
+#+BEGIN_SRC
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:\
+  00,00,00,00,\
+  00,00,00,00,\
+  02,00,00,00,\
+  1d,00,3a,00,\
+  00,00,00,00
+#+END_SRC
+
+* Swap left Alt and left Win keys
+
+#+BEGIN_SRC
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:\
+  00,00,00,00,\
+  00,00,00,00,\
+  03,00,00,00,\
+  38,00,5b,e0,\
+  5b,e0,38,00\
+  00,00,00,00
+#+END_SRC
+
+* Both of the above
+
+#+BEGIN_SRC
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:\
+  00,00,00,00,\
+  00,00,00,00,\
+  04,00,00,00,\
+  38,00,5b,e0,\
+  5b,e0,38,00\
+  1d,00,3a,00,\
+  00,00,00,00
+#+END_SRC
+
+* Reset all mappings
+
+#+BEGIN_SRC
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:\
+  00,00,00,00,\
+  00,00,00,00,\
+  01,00,00,00,\
+  00,00,00,00
+#+END_SRC
+
+* Explanation
+
+The ~HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout~ registry entry
+is a binary entry which governs mapping table for the keyboard.
+
+Its value has the following format:
+
+|----------+---------------+-------------------------------------------------------|
+|    Bytes | Values        | Meaning                                               |
+|----------+---------------+-------------------------------------------------------|
+|     0..3 | ~00 00 00 00~ | Version, always zeroes                                |
+|     4..7 | ~00 00 00 00~ | Flags, always zeroes                                  |
+|    8..11 | ~LL HH 00 00~ | Number of mappings + 1, LL - low byte, HH - high byte |
+|    12..X | ~Ln Hn Lo Ho~ | ~Ln Hn~ - new scancode, ~Lo Ho~ - old scancode        |
+| X+1..X+3 | ~00 00 00 00~ | Trailing zeroes                                       |
+|----------+---------------+-------------------------------------------------------|
+
+Key scancodes for use in this entry (already with proper byte order):
+
+|---------+--------------|
+| Bytes   | Key          |
+|---------+--------------|
+| ~01 00~ | Esc          |
+| ~02 00~ | 1            |
+| ~03 00~ | 2            |
+| ~04 00~ | 3            |
+| ~05 00~ | 4            |
+| ~06 00~ | 5            |
+| ~07 00~ | 6            |
+| ~08 00~ | 7            |
+| ~09 00~ | 8            |
+| ~0A 00~ | 9            |
+| ~0B 00~ | 0            |
+| ~0C 00~ | -            |
+| ~0D 00~ | =            |
+| ~0E 00~ | Backspace    |
+| ~0F 00~ | Tab          |
+| ~10 00~ | q            |
+| ~11 00~ | w            |
+| ~12 00~ | e            |
+| ~13 00~ | r            |
+| ~14 00~ | t            |
+| ~15 00~ | y            |
+| ~16 00~ | u            |
+| ~17 00~ | i            |
+| ~18 00~ | o            |
+| ~19 00~ | p            |
+| ~1A 00~ | [            |
+| ~1B 00~ | ]            |
+| ~1C 00~ | Enter        |
+| ~1C E0~ | Numpad Enter |
+| ~1D 00~ | Left Ctrl    |
+| ~1D E0~ | Right Ctrl   |
+| ~1E 00~ | a            |
+| ~1F 00~ | s            |
+| ~20 00~ | d            |
+| ~20 E0~ | Mute         |
+| ~21 00~ | f            |
+| ~22 00~ | g            |
+| ~22 E0~ | Play/Pause   |
+| ~23 00~ | h            |
+| ~24 00~ | j            |
+| ~24 E0~ | Stop         |
+| ~25 00~ | k            |
+| ~26 00~ | l            |
+| ~27 00~ | ;            |
+| ~28 00~ | '            |
+| ~29 00~ | `            |
+| ~2A 00~ | Left Shift   |
+| ~2B 00~ | \            |
+| ~2C 00~ | z            |
+| ~2D 00~ | x            |
+| ~2E 00~ | c            |
+| ~2E E0~ | Volume down  |
+| ~2F 00~ | v            |
+| ~30 00~ | b            |
+| ~30 E0~ | Volume up    |
+| ~31 00~ | n            |
+| ~32 00~ | m            |
+| ~32 00~ | WWW key      |
+| ~33 00~ | ,            |
+| ~34 00~ | .            |
+| ~35 00~ | /            |
+| ~35 E0~ | Numpad /     |
+| ~36 00~ | Right Shift  |
+| ~37 00~ | Numpad *     |
+| ~37 E0~ | PrtScr       |
+| ~38 00~ | Left Alt     |
+| ~38 E0~ | Right Alt    |
+| ~39 00~ | Spacebar     |
+| ~3A 00~ | Caps Lock    |
+| ~3B 00~ | F1           |
+| ~3C 00~ | F2           |
+| ~3D 00~ | F3           |
+| ~3E 00~ | F4           |
+| ~3F 00~ | F5           |
+| ~40 00~ | F6           |
+| ~41 00~ | F7           |
+| ~42 00~ | F8           |
+| ~43 00~ | F9           |
+| ~44 00~ | F10          |
+| ~45 00~ | Num Lock     |
+| ~46 00~ | Ctrl+Break   |
+| ~47 00~ | Numpad 7     |
+| ~47 E0~ | Home         |
+| ~48 00~ | Numpad 8     |
+| ~48 E0~ | Up Arrow     |
+| ~49 00~ | Numpad 9     |
+| ~49 E0~ | PgUp         |
+| ~4A 00~ | Numpad -     |
+| ~4B 00~ | Numpad 4     |
+| ~4B E0~ | Left Arrow   |
+| ~4C 00~ | Numpad 5     |
+| ~4D 00~ | Numpad 6     |
+| ~4D E0~ | Right Arrow  |
+| ~4E 00~ | Numpad +     |
+| ~4F 00~ | Numpad 1     |
+| ~4F E0~ | End          |
+| ~50 00~ | Numpad 2     |
+| ~50 E0~ | Down Arrow   |
+| ~51 00~ | Numpad 3     |
+| ~51 E0~ | PgDn         |
+| ~52 00~ | Numpad 0     |
+| ~52 E0~ | Insert       |
+| ~53 00~ | Numpad .     |
+| ~53 E0~ | Delete       |
+| ~54 00~ | Alt+SysRq    |
+| ~55 00~ |              |
+| ~56 00~ |              |
+| ~57 00~ | F11          |
+| ~58 00~ | F12          |
+| ~59 00~ |              |
+| ~5A 00~ |              |
+| ~5B 00~ |              |
+| ~5B E0~ | Left Win     |
+| ~5C 00~ |              |
+| ~5C E0~ | Right Win    |
+| ~5D 00~ |              |
+| ~5D E0~ | Menu key     |
+| ~5E 00~ |              |
+| ~5E E0~ | Power        |
+| ~5F 00~ |              |
+| ~5F E0~ | Sleep        |
+| ~60 00~ |              |
+| ~61 00~ |              |
+| ~62 00~ |              |
+| ~63 00~ |              |
+| ~63 E0~ | Wake         |
+|---------+--------------|
