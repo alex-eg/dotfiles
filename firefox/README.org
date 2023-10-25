@@ -5,3 +5,6 @@
 
   Place this file in ~/.mozilla/firefox/<your_profile>.default/chrome/ dir.
   If the dir doesn't exist, feel free to create it.
+
+  Set ~toolkit.legacyUserProfileCustomizations.stylesheets~ in Firefox
+  ~about:config~.
