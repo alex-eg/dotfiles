@@ -210,3 +210,5 @@
 (use-package fulcrum-mode
   :vc
   (fulcrum-mode :url "https://github.com/koto-bank/fulcrum-mode"))
+
+(set-fill-column 80)
