@@ -106,6 +106,8 @@
 (use-package eglot
   :hook ((c-mode c++-mode objc-mode) .
          'eglot-ensure)
+  :custom
+  (eglot-ignored-server-capabilities '(:hoverProvider))
   :config (add-to-list 'eglot-server-programs
                        (list '(c++-mode c-mode objc-mode) .
                              (if (eq system-type 'darwin)
