@@ -36,13 +36,10 @@
   (setq projectile-enable-caching t)
   (projectile-mode 1))
 
-(use-package paredit
-  :ensure t
-  :hook ((clojure-mode lisp-mode emacs-lisp-mode) . paredit-mode))
 
 (use-package paredit
   :ensure t
-  :hook ((clojure-mode lisp-mode emacs-lisp-mode) . paredit-mode))
+  :hook ((fulcrum-mode clojure-mode lisp-mode emacs-lisp-mode) . paredit-mode))
 
 (use-package vertico
   :init (vertico-mode))
@@ -228,3 +225,12 @@
   (yas-snippet-dirs '("~/dev/yasnippets/"))
   :config
   (yas-global-mode 1))
+
+;;; Already in master, so remove after next update (current 29.1)
+(unless (package-installed-p 'vc-use-package)
+  (package-vc-install "https://github.com/slotThe/vc-use-package"))
+(require 'vc-use-package)
+
+(use-package fulcrum-mode
+  :vc
+  (fulcrum-mode :url "https://github.com/koto-bank/fulcrum-mode"))
