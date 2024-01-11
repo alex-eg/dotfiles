@@ -49,7 +49,7 @@
   :preface
   (defvar consult-prefix-map (make-sparse-keymap))
   (fset 'consult-prefix-map consult-prefix-map)
-  :bind (:map ctl-x-map ("c" . consult-prefix-map)
+  :bind (:map mode-specific-map ("c" . consult-prefix-map)
          :map consult-prefix-map
          ("r" . consult-recent-file)
          ("o" . consult-outline)
