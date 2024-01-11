@@ -87,16 +87,10 @@
   :init
   (global-corfu-mode))
 
-(use-package org
-  :bind (("C-c a" . org-agenda)
-         ("C-c c" . org-capture))
-  :config (setq org-log-done t)
-  (setq org-agenda-files '("~/sync/org.org"
-                           "~/sync/todo.org")
-        org-refile-targets '(("~/sync/org.org" :maxlevel . 3)
-                             ("~/sync/todo.org" :maxlevel . 2))))
+(use-package org)
 
 (use-package org-journal
+  :bind (("C-c C-j" . org-journal-new-entry))
   :init (setq
          org-journal-file-type 'yearly
          org-journal-dir "~/dev/journal")
