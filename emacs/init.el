@@ -65,18 +65,11 @@
   :init (marginalia-mode))
 
 (use-package magit
-  :delight
-  :custom
-  (magit-bury-buffer-function
-   (lambda (kill) (kill-buffer)))
   :bind
   (:map mode-specific-map
         :prefix-map magit-prefix-map
         :prefix "m"
         ("b" . #'magit-blame-addition)
-        ("B" . #'magit-branch-create)
-        ("c" . #'magit-checkout)
-        ("C" . #'magit-commit-create)
         ("f" . #'magit-find-file)
         ("l" . #'magit-log-buffer-file)))
 
