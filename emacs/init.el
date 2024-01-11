@@ -121,13 +121,19 @@
             a))
     `(progn ,@a)))
 
+(defun my-transpose-lines ()
+  (interactive)
+  (transpose-lines 0)
+  (exchange-point-and-mark))
+
 (global-set-keys
  ([insert] . 'delete-selection-mode) ;; Overwrite mode
  ((kbd "M-o") . 'other-window)       ;; Instead of C-x o
  ((kbd "C-[ C-[ C-[") . nil)
- ((kbd "C-x /") . #'replace-string)
- ((kbd "C-x w") . #'switch-to-buffer-other-window)
- ((kbd "C-c l") . "λ"))
+ ((kbd "C-x /") . 'replace-string)
+ ((kbd "C-x w") . 'switch-to-buffer-other-window)
+ ((kbd "C-c l") . "λ")
+ ((kbd "C-x C-t") . 'my-transpose-lines))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
