@@ -36,6 +36,7 @@
   (setq projectile-enable-caching t)
   (projectile-mode 1))
 
+(use-package cmake-mode)
 
 (use-package paredit
   :ensure t
