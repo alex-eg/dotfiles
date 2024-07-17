@@ -1,0 +1,11 @@
+user_pref("accessibility.force_disabled", 1);
+user_pref("dom.event.clipboardevents.enabled", false);
+user_pref("extensions.pocket.enabled", false);
+user_pref("extensions.screenshots.disabled", true);
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
+user_pref("geo.enabled", false);
+user_pref("app.normandy.enabled", false);
+user_pref("app.shield.optoutstudies.enabled", false);

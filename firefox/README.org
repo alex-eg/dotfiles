@@ -6,5 +6,11 @@
   Place this file in ~/.mozilla/firefox/<your_profile>.default/chrome/ dir.
   If the dir doesn't exist, feel free to create it.
 
-  Set ~toolkit.legacyUserProfileCustomizations.stylesheets~ in Firefox
-  ~about:config~.
+  ~toolkit.legacyUserProfileCustomizations.stylesheets~ must be set in
+  Firefox ~about:config~ for this to work.
+
+* user.js
+  ~about:config~ settings, disabling telemetry, useless extensions and
+  accessibility, which seems to consume a lot of resources. Put it
+  into the profile directory.
+  This file overrides entries in ~prefs.js~.
