@@ -2,8 +2,8 @@
 family = "Iosevka Custom"
 spacing = "fixed"
 serifs = "slab"
-no-cv-ss = true
-no-ligation = true
+noCvSs = true
+noLigation = true
 
   [buildPlans.iosevka-custom.variants]
   inherits = "ss15"
