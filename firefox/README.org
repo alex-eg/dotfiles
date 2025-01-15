@@ -6,6 +6,9 @@
   Place this file in ~/.mozilla/firefox/<your_profile>.default/chrome/ dir.
   If the dir doesn't exist, feel free to create it.
 
+  On modern Ubuntu the profile resides somewhere in ~/snap. Exact
+  location can be found with about:profiles in Firefox itself.
+
   ~toolkit.legacyUserProfileCustomizations.stylesheets~ must be set in
   Firefox ~about:config~ for this to work.
 
