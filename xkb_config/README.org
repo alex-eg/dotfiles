@@ -9,3 +9,6 @@ Copy the contents to =~/.config/xkb=.
 
 And to run it every time your window manager starts, add it to
 ~.xinitrc~, or just to your WM of choise default autostart mechanism.
+
+* Keymap for UHK80
+In progress...

@@ -1,0 +1,5 @@
+default xkb_keycodes "uhk80" {
+  <CHLY> = 97; // change layout
+  <KANJ> = 101; // ja/lat input
+  <ISOK> = 94; // iso key
+};
