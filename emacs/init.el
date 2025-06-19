@@ -171,6 +171,11 @@
                                    (inline-open . 0)
                                    (innamespace . 4)))))
 
+(c-add-style "my-java"
+             '("java"
+               (c-offsets-alist . ((inline-open . 0)
+                                   (substatement-open . 0)))))
+
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-style "my-style")))
