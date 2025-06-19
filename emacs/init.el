@@ -166,10 +166,10 @@
 (c-add-style "my-style"
              '("k&r"
                (c-basic-offset . 4)
-               (case-label . 0)
-               (inlambda . 0)
-               (inline-open . 0)
-               (innamespace . 4)))
+               (c-offsets-alist . ((case-label . 0)
+                                   (inlambda . 0)
+                                   (inline-open . 0)
+                                   (innamespace . 4)))))
 
 (add-hook 'c-mode-common-hook
           (lambda ()
